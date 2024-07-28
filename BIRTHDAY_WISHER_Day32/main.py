@@ -3,6 +3,12 @@ import smtplib
 import pandas as pd
 import datetime as dt
 import os
+from dotenv import load_dotenv
+
+#Credentials 
+load_dotenv(".env")
+User = os.getenv("USER")
+Pass = os.getenv("PASSWORD")
 
 # TIME MODULE
 time = dt.datetime.now()
@@ -30,8 +36,8 @@ if exist:
         new_letter = letter.read().replace("[NAME]", person_name)
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
-        connection.login(user="salihyos2019@gmail.com", password="wciannkbjszizitm")
-        connection.sendmail(from_addr="salihyos2019@gmail.com",
+        connection.login(user=User, password=Pass)
+        connection.sendmail(from_addr=User,
                             to_addrs=person_email,
                             msg=f"Subject: BIRTHDAY CARD\n\n{new_letter}"
                             )
