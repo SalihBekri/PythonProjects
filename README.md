@@ -1,0 +1,1 @@
+This file is for my python projects that i did while i was following a Udemy course.
